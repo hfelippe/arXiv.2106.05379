@@ -9,7 +9,7 @@ import re
 
 
 # -----------------------------------------------------------------------------
-# 				The following is to sort files in numerical order
+# The following is to sort files in numerical order
 
 numbers = re.compile(r'(\d+)')
 

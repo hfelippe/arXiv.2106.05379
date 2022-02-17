@@ -16,20 +16,21 @@ def export_density_matrix(path_to_data):
 	"""
 	folder = [
 				file for file in sorted(
-									glob(path_to_data + '\*',
-                               recursive=True), 
+							glob(path_to_data + '\*',
+					recursive=True), 
 				key=numericalSort)
 			]
 
-	before = [file for file in sorted(
-									glob(folder[1] + '\*',
-								recursive=True),
+	before = [
+				file for file in sorted(
+							glob(folder[1] + '\*',
+					recursive=True),
 				key=numericalSort)
 			]
 
 	after = [file for file in sorted(
-									glob(folder[0] + '\*',
-								recursive=True),
+							glob(folder[0] + '\*',
+					recursive=True),
 				key=numericalSort)
 			]
 
@@ -44,23 +45,19 @@ def export_density_matrix(path_to_data):
 		A = density_matrix(X)
 
 		if before == True:
-			return np.savetxt(
-					'density_matrix_subject_' + str(subject) + '_before.txt', A)
+			return np.savetxt('density_matrix_subject_' + str(subject) + '_before.txt', A)
 
 		if after == True:
-			return np.savetxt(
-					'density_matrix_subject_' + str(subject) + '_after.txt', A)
+			return np.savetxt('density_matrix_subject_' + str(subject) + '_after.txt', A)
 
 	for i in np.arange(7, 8): 
 		export(
-				before[i]+'**/timeCourse*.mat', i + 1,
-						before=True,
-				after=False
+			before[i]+'**/timeCourse*.mat', i + 1, 
+				before=True, after=False
 			)
 
 	for i in np.arange(7, 8): 
 		export(
-				after[i]+'**/timeCourse*.mat', i + 1,
-						before=False,
-				after=True
+			after[i]+'**/timeCourse*.mat', i + 1,
+				before=False, after=True
 			)
