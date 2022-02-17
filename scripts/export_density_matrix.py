@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from important_functions import *
+from functions import *
 
 path_to_data = str("./data/time_series/")
 
