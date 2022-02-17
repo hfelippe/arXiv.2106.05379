@@ -1,0 +1,45 @@
+\documentclass{standalone}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\usepackage{bm}
+
+\begin{document}
+
+\begin{tikzpicture}[scale=1.0]
+\begin{axis}
+	[
+	xlabel = Time,
+	ylabel = BOLD signal,
+	xmax = 150, xmin = 20,
+	ymax = 2.1, ymin = -0.05,
+	xtick={20, 52.5, 85, 117.5, 150},
+	ytick = {-5},
+	xticklabels = {0, \,, \,, \,, $n$},
+	yticklabels = {\,,\,},
+	x label style={at={(axis description cs:0.5,0.05)}},
+	y label style={at={(axis description cs:0.1,0.5)}},
+	legend entries={\,$\bm{x}_i$, \,$\bm{x}_j$},
+	legend style = { at = {(0.25,0.95) }},
+	]
+	
+\pgfplotstableread{example_timeseries.txt}
+	\datatable	
+
+	\addplot[
+	thick,
+	color = Orange,
+	] table[y = 2] from \datatable ;
+	
+
+	\addplot[
+	thick,
+	color = NavyBlue,
+	] table[y = 1] from \datatable ;
+	
+	
+\end{axis}
+\end{tikzpicture}
+
+\end{document}

@@ -1,0 +1,100 @@
+\documentclass{standalone}
+
+\usepackage[dvipsnames]{xcolor}
+\usepackage{pgfplots}
+\usepackage{tikz}
+
+\begin{document}
+
+\begin{tikzpicture}
+\begin{axis}
+	[
+	thick,
+	legend style = { at = {(0.425,0.425) }},
+	xlabel = Subject,
+	ylabel = $S/S_{\textrm{max}}$,
+	xmax = 9.5, xmin = 0.5,
+	ymax = 0.60, ymin = 0.44,
+	xtick={1,2,3,4,5,6,7,8,9},
+	ytick = {0.45,0.59},
+	x label style={at={(axis description cs:0.5,0.0125)}},
+	y label style={at={(axis description cs:0.1,.5)}},
+	yticklabels = {0.45,0.59},
+	]
+
+		\node (source1) at (axis cs:1,  0.562 ){}; 
+		\node (destination1) at (axis cs:1,  0.516 ){};
+		\node (source2) at (axis cs:2,  0.55639 ){}; 
+		\node (destination2) at (axis cs:2,  0.57734 ){};
+		\node (source3) at (axis cs:3,  0.54105 ){}; 
+		\node (destination3) at (axis cs:3,  0.55417 ){};
+		\node (source4) at (axis cs:4,  0.53585 ){}; 
+		\node (destination4) at (axis cs:4,  0.546 ){};
+		\node (source5) at (axis cs:5,  0.5238 ){}; 
+		\node (destination5) at (axis cs:5,  0.56091 ){};
+		\node (source6) at (axis cs:6,  0.45117 ){}; 
+		\node (destination6) at (axis cs:6,  0.48621 ){};
+		\node (source7) at (axis cs:7,  0.55283 ){}; 
+		\node (destination7) at (axis cs:7,  0.58283 ){};
+		\node (source8) at (axis cs:8,  0.55144 ){}; 
+		\node (destination8) at (axis cs:8,  0.5875 ){};
+		\node (source9) at (axis cs:9,  0.5807 ){}; 
+		\node (destination9) at (axis cs:9,  0.521 ){};
+		
+		\draw[-](source1)--(destination1);
+		\draw[-,thick,dotted](source2)--(destination2);
+		\draw[-,thick,dotted](source3)--(destination3);
+		\draw[-,thick,dotted](source4)--(destination4);
+		\draw[-,thick,dotted](source5)--(destination5);
+		\draw[-,thick,dotted](source6)--(destination6);
+		\draw[-,thick,dotted](source7)--(destination7);
+		\draw[-,thick,dotted](source8)--(destination8);
+		\draw[-](source9)--(destination9);
+
+    	
+	\addplot[
+	color = black,
+	fill = white,
+	mark = square*,
+	mark size = 3pt,
+	only marks
+	] coordinates {
+	( 1, 0.56149 )
+	( 2, 0.55639 )
+	( 3, 0.54105 )
+	( 4, 0.53585 )
+	( 5, 0.5238 )
+	( 6, 0.45117 )
+	( 7, 0.55283 )
+	( 8, 0.55144 )
+	( 9, 0.58017 )
+	};
+
+	\addplot[
+	color = black,
+	fill = black,
+	mark = *,
+	mark size = 2.25pt,
+	only marks
+	] coordinates {
+	( 1, 0.5203 )
+	( 2, 0.57734 )
+	( 3, 0.55417 )
+	( 4, 0.54437 )
+	( 5, 0.56091 )
+	( 6, 0.48621 )
+	( 7, 0.58283 )
+	( 8, 0.5875 )
+	( 9, 0.5253 )
+	};
+	\addlegendentry{\,\,\,\,$S_{\textrm{before}}$};
+	\addlegendentry{$S_{\textrm{after}}$};
+	\addlegendimage{no markers};
+	\addlegendentry{\quad $\Delta S < 0$};
+	\addlegendimage{no markers,dotted,ultra thick};
+	\addlegendentry{\quad $\Delta S > 0$};
+	
+\end{axis}
+\end{tikzpicture}
+
+\end{document}
